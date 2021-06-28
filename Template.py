@@ -36,3 +36,6 @@ class Template(object):
 		print("Success. Your page has been generated with title and author tags.")
 	def h1(self, title: str, size: int, color: str, center: bool, font: str):
 		pass
+	def open(self, saved_to: str):
+		webbrowser.open('file://' + os.path.realpath(saved_to))
+		print("Success. Opened your file in your default browser.")
