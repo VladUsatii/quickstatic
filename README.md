@@ -19,16 +19,27 @@ import sys, os # optionally get the os environment user
 from quickstatic import Template
 temp = Template() # init
 
+# destination HTML file
+save_to = "your/project/directory.html"
+
 # create a page
-temp.create_page(title="My First Site!", author="os.environ.get("USER")", save_to="your/project/directory.html")
+temp.create_page(title="My First Site!", author="os.environ.get("USER")", save_to=save_to)
 
 # add a header "<h1>" tag (we go by pixels)
 temp.h1("Test Site", size=32, color="black", center=True, font="BlinkMacSystemFont")
 
+# adds 4 divs in a row (be creative!)
 for x in range(0, 5):
 	temp.div(color="gray", padding=25, center=True)
 
-temp.open()
+# open in chrome
+temp.open(save_to)
+
+# or
+
+# open in a custom tabless chrome window
+temp.tablesswindow(save_to)
+
 ```
 
 We import Template, we initialize the library as a smaller variable, we create a page with a title and author and location, then add a header and 5 divs to it, colored gray. Everything is centered. Then, we run ```open()``` from the Template class and when running the Python script, it will open a new web browser window with your static page.
