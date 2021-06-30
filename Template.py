@@ -159,6 +159,16 @@ class Template(object):
 		else:
 			print("Not on a supported system.")
 
+	def startserver(self):
+		ask = input("Is quickstatic in the same directory as your html document? Please answer honestly. If you move html file from the folder, this process won't run (" + u"\u001b[32my\u001b[0m or \u001b[31mn\u001b[0m).")
+		if ask == 'y':
+			try:
+				subprocess.run(['http-server'])
+				print("To view your HTML file, click on the name of your saved_to file in the directory found at your HTTP localhost location.")
+			except KeyboardInterrupt:
+				pass
+		else:
+			pass
 
 	"""
 

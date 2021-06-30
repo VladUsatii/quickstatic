@@ -4,6 +4,12 @@ Ever wanted to generate quick HTML from tags using Python and see your result di
 
 ## Installation
 
+Before anything, get this prerequisite for serving your site locally:
+
+```
+brew install http-server
+```
+
 Firstly, ```git clone https://github.com/VladUsatii/quickstatic.git```. Put it in the project folder of the website you want to make, because it is as simple as importing classes.
 
 Install ```requirements.txt``` by writing ```pip install requirements.txt```.
@@ -40,9 +46,14 @@ temp.open(save_to)
 # open in a custom tabless chrome window
 temp.tablesswindow(save_to)
 
+# or
+
+# even run through HTTP-Server
+temp.startserver() # localhost
+
 ```
 
-We import Template, we initialize the library as a smaller variable, we create a page with a title and author and location, then add a header and 5 divs to it, colored gray. Everything is centered. Then, we run ```open()``` from the Template class and when running the Python script, it will open a new web browser window with your static page.
+We import Template, we initialize the library as a smaller variable, we create a page with a title and author and location, then add a header and 5 divs to it, colored gray. Everything is centered. Then, we run ```open()``` from the Template class and when running the Python script, it will open a new web browser window with your static page. We even ran a localhost server with your entire folder so that you can go back and forth.
 
 It is that easy.
 
@@ -50,10 +61,20 @@ Now, if you want to add more and you want to make this fully animated and/or acc
 
 ## Documentation
 
-You can find our Docs here:
-
-<insert link here>
+You can find our Docs by simply reading the code. There are multiline comments describing everything.
 
 ## Contribute
 
 We gladly accept contributions and help with this idea. It was originally created to make HTML less boring and more script-oriented. If you think about it, it is very similar to PyQt's concept of stylesheets and tags. If you can make it more user-friendly, a pull-request would be amazing.
+
+## TODO:
+
+- Add div entry
+- Use stylesheets
+- Import fonts
+- Preload
+- Full Stack Automation
+
+----
+
+Full project created by Vlad Usatii.
