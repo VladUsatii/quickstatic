@@ -1,2 +1,3 @@
 pathlib==1.0.1
 pathlib2==2.3.5
+webscreenshot==2.94

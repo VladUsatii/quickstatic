@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 import webbrowser
-import sys, os
+import sys
+import os
+import subprocess
 from requests import get
 import hashlib
 import datetime
 from pathlib import Path
-from selenium import webdriver
-import subprocess
+import time
+from webscreenshot.webscreenshot import *
+import argparse
 
 class Template(object):
 	def __init__(self):
@@ -177,20 +180,24 @@ class Template(object):
 	save_to is the local/public path to the html file from localhost or the internet (static)
 	save_image_to is the path to the directory where the screenshot should be stored
 
-	SCREENSHOT requires Selenium webdriver Google Chrome
+	SCREENSHOT requires Selenium webdriver Google Chrome (NOT Chromium Stable or others)
 
 	SCREENSHOT takes a picture of your static page on first frame load and saves to path
+	Note: USE only AFTER declaring site headers and content
 
 	"""
 
 	def screenshot(self, save_to: str, save_image_to: str):
-		# DEF
-		DRIVER = 'chromedriver' # assert chrome
+		# init for screenshot
+		path = Path(__file__).parent.resolve()
+		save_to = str(path) + f"/{save_to}"
+		url = [f"file://{save_to}"]
+		save_image_to = str(path) + f"/{save_image_to}"
+		print(path, save_to, url, save_image_to)
 
-		driver = webdriver.Chrome(DRIVER)
-		driver.get("file://" + os.path.abspath(save_to))
-		screenshot = driver.save_screenshot(save_image_to)
-		driver.quit()
+		options = argparse.Namespace(URL=None, ajax_max_timeouts='1400,1800', cookie=None, crop=None, custom_js=None, format='png', header=None, http_password=None, http_username=None, imagemagick_binary=None, input_file=None, label=False, label_bg_color='NavajoWhite', label_size=60, log_level='DEBUG', multiprotocol=False, no_error_file=False, no_xserver=False, output_directory=f'{save_image_to}', port=None, proxy=None, proxy_auth=None, proxy_type=None, quality=75, renderer='phantomjs', renderer_binary=None, single_output_file=None, ssl=False, timeout=30, verbosity=2, window_size='1200,800', workers=4)
+
+		take_screenshot(url, options)
 
 class UnitTest(object):
 	def __init__(self):

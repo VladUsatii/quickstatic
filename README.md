@@ -4,15 +4,16 @@ Ever wanted to generate quick HTML from tags using Python and see your result di
 
 ## Installation
 
-Before anything, get this prerequisite for serving your site locally:
+Before anything, get these prerequisites for serving your site locally and rendering screenshots:
 
 ```
 brew install http-server
+brew install phantom-js
 ```
 
 Firstly, ```git clone https://github.com/VladUsatii/quickstatic.git```. Put it in the project folder of the website you want to make, because it is as simple as importing classes.
 
-Install ```requirements.txt``` by writing ```pip install requirements.txt```.
+Install ```requirements.txt``` by writing ```sudo pip install requirements.txt```. Use ```sudo```!
 
 ## Your First Website
 
@@ -57,7 +58,42 @@ We import Template, we initialize the library as a smaller variable, we create a
 
 It is that easy.
 
-Now, if you want to add more and you want to make this fully animated and/or accessible by others, read our documentation.
+## Taking Screenshots
+
+We made a oneliner to take screenshots of your website. This was made for simplicity and export reasons. What if a user wants to take a screenshot and use that image somewhere else to showcase how cool their Python quickstatic site is? Had to do it. Here is a basic implementation:
+
+```python3
+# yada yada yada imports
+# ...
+
+temp.screenshot("myhtmlpage.html", "screenshot.png")
+
+# RESULT:
+# [+] 1 Screenshot
+# [-] 0 Errors
+
+# SAMPLE OUTPUT:
+# Downloads
+# └ Dev
+#   └ quickstatic
+#     └ screenshot
+#       └ screenshot.png
+
+```
+
+## Site Daemon
+
+#### Coming with Stable Release 2
+We made a daemon to auto reload portions of your static page every 'n' seconds. This is useful for standalone web apps that rely on reloads for status updates. What if the user is offline? What if a new ad has to reload?
+
+```python3
+# yada yada yada imports
+# ...
+
+temp.daemon("myhtmlpage.html", "div-or-html-class", 10) # 10 seconds
+```
+
+Add your site, your class for the element, and the reload time.
 
 ## Documentation
 
