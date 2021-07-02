@@ -132,8 +132,25 @@ class Template(object):
 
 	"""
 
-	def div(self, x: str, y: str, width: str, height: str, hex: str):
-		pass
+	def div(self, x: str, y: str, height: str, width: str, className: str, save_to: str):
+		lines = open(save_to).read().splitlines()
+		lines[-1] = f"<div style='left:{x};top:{y};height:{height};width:{width};' class=\"{className}\"></div>\n</body></html>"
+		open(save_to, 'w').write('\n'.join(lines))
+		open(save_to).close()
+		print(f"Successfully wrote a <div> tag.")
+
+
+	# ///////////////////////////////////////////////////////////////////////////////////
+	# INTERACTIVE STATIC
+
+	def classreload(self, tagclass: str, newContent: str, reloadtime: int, save_to: str):
+		reloadtime = str(reloadtime)
+		lines = open(save_to).read().splitlines()
+		lines[-1] = "<script>\nfunction updateDiv() { var d = document.document.getElementsByClassName(\"" + tagclass + "\")[0];d.innerHTML = \"" + newContent + "\";}setInterval(updateDiv, " + reloadtime + "000);\n</body></html>"
+		open(save_to, 'w').write('\n'.join(lines))
+		open(save_to).close()
+		print(f"Successfully wrote a classreload in JavaScript with reload time of '{reloadtime}'.")
+
 
 	# ///////////////////////////////////////////////////////////////////////////////////
 	# ACTIVATE OPTIONS

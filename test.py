@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 from Template import Template
-
-# 4 lines of code made this!
-
+import time
 t = Template()
 t.create_page("Test Page", "Vlad U", "testpage.html")
 t.h1('Example', 32, 'black', True, 'BlinkMacSystemFont', 'testpage.html')
-# t.open("testpage.html")
+t.div("20px", "100px", "200px", "200px", "testyDiv", "testpage.html")
+
+string = "a"
+for x in range(0, 5):
+	t.classreload("testyDiv", "yeet", f"{string}", "testpage.html")
+	string = string + "a"
+	t.open("testpage.html")
+	time.sleep(5)
 # t.startserver()
 #t.tablesswindow("testpage.html")
-t.screenshot("testpage.html", "screenshot.png")
