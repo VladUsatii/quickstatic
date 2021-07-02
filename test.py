@@ -8,7 +8,7 @@ t.div("20px", "100px", "200px", "200px", "testyDiv", "testpage.html")
 
 string = "a"
 for x in range(0, 5):
-	t.classreload("testyDiv", "yeet", f"{string}", "testpage.html")
+	t.classreload("testyDiv", f"{string}", "5", "testpage.html")
 	string = string + "a"
 	t.open("testpage.html")
 	time.sleep(5)

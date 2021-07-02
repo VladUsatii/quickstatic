@@ -146,7 +146,7 @@ class Template(object):
 	def classreload(self, tagclass: str, newContent: str, reloadtime: int, save_to: str):
 		reloadtime = str(reloadtime)
 		lines = open(save_to).read().splitlines()
-		lines[-1] = "<script>\nfunction updateDiv() { var d = document.document.getElementsByClassName(\"" + tagclass + "\")[0];d.innerHTML = \"" + newContent + "\";}setInterval(updateDiv, " + reloadtime + "000);\n</body></html>"
+		lines[-1] = "<script>\nfunction updateDiv() { var d = document.document.getElementsByClassName(\"" + tagclass + "\")[0];d.innerHTML = \"" + newContent + "\";}setInterval(updateDiv, " + reloadtime + "000);</script>\n</body></html>"
 		open(save_to, 'w').write('\n'.join(lines))
 		open(save_to).close()
 		print(f"Successfully wrote a classreload in JavaScript with reload time of '{reloadtime}'.")
